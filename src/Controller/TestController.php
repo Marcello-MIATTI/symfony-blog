@@ -3,36 +3,31 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class TestController extends AbstractController
 {
-    #[Route('/exo', name: 'app_test')]
-    public function index(): Response
+    #[Route('/test', name: 'app_test')]
+    public function index()
     {
-    
-    $prenom = "Marcello";
-    $nom = "MIATTI";
-    $age = 32;
-    $profession = "Développeur";
-    
-    $qualite = ['personne' => ['qualite1' => 'gentil' ,'qualite2' => 'perséverant' ,'qualite3' => 'patient' ],
-                'professionnelle' => ['talent1' =>'organisé' , 'talent2' => 'pragmatique', 'talent3' => 'arrangant']];
+        $prenom = "Marcello";
+        $nom = "MIATTI";
 
-    // foreach ($qualite as $key => $value) {
-    //     foreach ($value as $key => $value) {
-    //             echo "$value";
-    //         }
-    // }
+        $identite = [ 'personne1' => 
+        ["prenom" => 'Mickaël',
+        "nom" => 'MIATTI',
+        "nationnalité" => 'française'],
 
-    return $this->render("exo.html.twig", [
-        'prenom' => $prenom,
-        'nom' => $nom,
-        'age' => $age,
-        'profession' => $profession,
-        'qualite' => $qualite
-
-    ]);
+        'personne2' => 
+        ["prenom" => 'Marcello',
+        "nom" => 'MIATTI',
+        "nationnalité" => 'française']];
+        
+        return $this->render("test.html.twig" , [
+            'prenom' => $prenom,
+            'nom' => $nom,
+            'identite' => $identite
+        ]
+    );
     }
 }
